@@ -79,7 +79,10 @@ export function App() {
 
           {transactions !== null && (
             <button
-              className="RampButton"
+              className={`RampButton ${
+                (paginatedTransactions?.nextPage == null || transactionsByEmployee?.length === 0) &&
+                "RampButton-hidden"
+              }`}
               disabled={paginatedTransactionsUtils.loading}
               onClick={async () => {
                 await loadAllTransactions()
